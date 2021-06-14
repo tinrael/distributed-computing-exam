@@ -14,10 +14,10 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-public class Client {
+public class ClientRmiTask2 {
     private final ManagerInterface managerInterface;
 
-    public Client() throws RemoteException, NotBoundException, MalformedURLException {
+    public ClientRmiTask2() throws RemoteException, NotBoundException, MalformedURLException {
         String url = "//localhost:123/ManagerImplementation";
         this.managerInterface = (ManagerInterface) Naming.lookup(url);
     }
@@ -51,7 +51,7 @@ public class Client {
     }
 
     public static void main(String[] args) throws IOException, NotBoundException {
-        Client client = new Client();
+        ClientRmiTask2 clientRmiTask2 = new ClientRmiTask2();
 
         System.out.println("<code>(#<argument>)*");
 
@@ -79,7 +79,7 @@ public class Client {
         String query = bufferedReader.readLine();
 
         while (!query.equals("exit")) {
-            client.sendQuery(query);
+            clientRmiTask2.sendQuery(query);
 
             System.out.print("Enter a query: ");
             query = bufferedReader.readLine();
